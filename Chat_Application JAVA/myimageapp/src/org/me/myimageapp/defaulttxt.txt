@@ -1,0 +1,50 @@
+ Welcome ! 
+ Before to fully use this software, you must :
+ 
+ 1. Make sure your Firewall is turned OFF.
+ 2. Configure your Adapter Settings to be fully public for Information Sharing. 
+ 3. Make sure your LAN / WAN is properly working. 
+
+ Thank you !
+
+/*
+      try
+      {
+        JFileChooser open = new JFileChooser();
+        int option = open.showOpenDialog(this);
+        File f1 = new File(open.getSelectedFile().getPath());
+        FileReader fr = new FileReader(f1);
+        BufferedReader br = new BufferedReader(fr);
+        String s;
+        while((s=br.readLine())!=null)
+        {
+            allchat.append(s + "\n");
+        }
+        fr.close();
+        }
+        catch(Exception ae)
+        {
+            System.out.println(ae);
+        }*/
+
+final JFileChooser fileDialog = new JFileChooser();
+        fileDialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	int returnVal = fileDialog.showOpenDialog(this);
+        if(returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            java.io.File file = fileDialog.getSelectedFile();
+            cconpath.setText(fileDialog.getSelectedFile().getAbsolutePath()); 
+	}
+
+try
+		{
+			File file = new File(cconpath.getText()+"/"+chatname.getText());
+			if(file.createNewFile()){
+                            JOptionPane.showMessageDialog(null," Created!\n Wait others to connect to your private group chat with\n Chat name "+chatname.getText()+" with Password ********"); 
+			}else{
+                            JOptionPane.showMessageDialog(null,"Creating Private Room Failed."); 
+			}
+		}
+		catch(Exception e)		
+		{
+		}
